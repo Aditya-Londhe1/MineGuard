@@ -18,6 +18,9 @@ import { useEffect, useRef, useState } from "react"
 
 import { useSocket } from "../context/SocketContext"
 
+const API_BASE_URL =
+  import.meta.env.VITE_API_BASE_URL || "http://127.0.0.1:8000"
+
 
 // A worker is OFFLINE only after 10 full seconds with no reading.
 // Workers report every ~5s, so this tolerates a couple of missed cycles
@@ -158,7 +161,7 @@ export default function Dashboard() {
     try {
 
       const response = await fetch(
-        "http://127.0.0.1:8000/api/alerts/"
+        `${API_BASE_URL}/api/alerts/`
       )
 
       const data = await response.json()
@@ -184,7 +187,7 @@ export default function Dashboard() {
     try {
 
       const response = await fetch(
-        "http://127.0.0.1:8000/api/workers/"
+        `${API_BASE_URL}/api/workers/`
       )
 
       const data = await response.json()
@@ -251,7 +254,7 @@ export default function Dashboard() {
     try {
 
       const response = await fetch(
-        `http://127.0.0.1:8000/api/alerts/${incident.id}/acknowledge`,
+        `${API_BASE_URL}/api/alerts/${incident.id}/acknowledge`,
         {
           method: "PATCH",
         }
@@ -294,7 +297,7 @@ export default function Dashboard() {
     try {
 
       const response = await fetch(
-        `http://127.0.0.1:8000/api/alerts/${incident.id}/resolve`,
+        `${API_BASE_URL}/api/alerts/${incident.id}/resolve`,
         {
           method: "PATCH",
         }
@@ -346,7 +349,7 @@ export default function Dashboard() {
     try {
 
       const response = await fetch(
-        `http://127.0.0.1:8000/api/alerts/${incident.id}/under-review`,
+        `${API_BASE_URL}/api/alerts/${incident.id}/under-review`,
         {
           method: "PATCH",
         }

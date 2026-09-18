@@ -3,7 +3,8 @@ import { useEffect, useState } from "react"
 import MineMap from "../components/dashboard/MineMap"
 import GeoWorkerMap from "../components/dashboard/GeoWorkerMap"
 
-const API_BASE_URL = "http://127.0.0.1:8000"
+const API_BASE_URL =
+  import.meta.env.VITE_API_BASE_URL || "http://127.0.0.1:8000"
 
 export default function MineMapPage() {
   const [workers, setWorkers] = useState([])

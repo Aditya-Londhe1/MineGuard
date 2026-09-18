@@ -1,6 +1,9 @@
 import { useEffect, useState } from "react"
 import IntelligenceCenter from "../components/intelligence/IntelligenceCenter"
 
+const API_BASE_URL =
+  import.meta.env.VITE_API_BASE_URL || "http://127.0.0.1:8000"
+
 export default function AIInsights() {
   const [workers, setWorkers] = useState([])
   const [workerId, setWorkerId] = useState("")
@@ -8,7 +11,7 @@ export default function AIInsights() {
   useEffect(() => {
     async function loadWorkers() {
       try {
-        const response = await fetch("http://127.0.0.1:8000/api/workers/")
+        const response = await fetch(`${API_BASE_URL}/api/workers/`)
         if (!response.ok) throw new Error("Failed to load workers")
         const data = await response.json()
         setWorkers(data)
