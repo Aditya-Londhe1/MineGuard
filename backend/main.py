@@ -72,8 +72,12 @@ app.add_middleware(
     CORSMiddleware,
 
     allow_origins=[
+        # Local development
         "http://localhost:5173",
         "http://127.0.0.1:5173",
+
+        # Render frontend
+        "https://mineguard-1.onrender.com",
     ],
 
     allow_credentials=True,
